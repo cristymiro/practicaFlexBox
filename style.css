@@ -1,0 +1,208 @@
+*{
+    text-decoration: none;/*Para que ningun elemento tenga ningu subrayado ni ninguna estilo por defecto. Ej: los enlaces: que vienen con subrayado*/
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#container{/*Esta es la etiqueta que contendrá toda la página web. Todos los elementos que estén dentro de ella va a ser flexibles. */
+    width: 90%; /*El ancho será el 90% de toda la página*/
+    height: auto;
+    margin: 0px auto; /*Para que se centre el contenido que haya dentro*/
+    border: 1px solid rgba(128, 128, 128, 0.493);
+    box-shadow: 0px 0px 10px #ccc;
+    margin-top: 40px; 
+    margin-bottom: 40px;
+    min-height: 600px;
+}   
+
+/*Cuando usamos las medidas de min-height, max-height o min-width o max-width, lo que le estamos diciendo es que por ejemplo, si al width le hemos dicho que tenga un máximo del 100% de la página, le marcamos luego un max-width de 500px. Con esto lo que le decimos es que mide siempre el 100% del ancho de la página pero una vez que llegues a los 500px no te expandas más. Con el min pasa lo mismo. Llegaría un punto que la caja no podría encoger más y veríamos como en la pantalla saldría una barra de scroll. */
+
+#header{/*Es la caja que contiene el logo y tambien el id del menu*/
+    display: flex; /*Tanto el logo como el menu vemos como se vuelven flexibles*/
+    flex-direction: row;
+    flex-wrap: wrap; /*Pra que si algo se intenta salir de la caja 
+    que lo ponga debajo*/
+    align-items: center; /*Los centra verticalmente*/
+    height: 120px; /*El align items se centra en base a esta altura*/
+    border-bottom: 1px solid rgba(128, 128, 128, 0.493);
+}
+
+.logo{
+    flex-grow: 1; /*A parte de que tengan su tamaño, el ponemos el flex-grow, para que cuando la pantalla se reduzca ocupen todo el anchp? ampliar información*/
+    flex-basis: 65%; /*Que la caja con id logo, ocupe el 65% del header*/
+    font-style: italic;
+    padding: 10px;
+    text-shadow: 5px 5px 5px rgba(128, 128, 128, 0.39);
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+#menu{
+    flex-grow: 1;
+    flex-basis: 30%;
+    height: 100%; /*Con esto le estamos diciendo que se posición arrib del todo, en el 100% de la caja*/
+    padding-right: 10px;
+
+}
+
+#menu > ul/*El primer hijo directo de menu*/{
+    display: flex; /*Le ponemos el display flex porque será la caja principal que contenga los enlaces que se convertirán en flexibles.*/
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between; /*Le damos un espacio entre los li que hay dentro de la ul*/
+    list-style: none; /*Los li de dentro de ul se dejarán de ver con un punt al lado*/
+
+    
+}
+
+#menu a{
+    text-transform: uppercase;
+    color: #444;
+    padding: 15px;
+    transition: all 300ms;/*Esta sirve para cuando le pongamos el hover*/
+
+}
+#menu a:hover{
+    background: #ccc;
+    color: white;
+}
+
+#content{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+
+}
+
+#projects{/*Ya es forma parte de un contenedor flexible pero a su vez projects también hace de contenedor flexible para las cajas que hay dentro de el*/
+    display: flex;
+    flex-flow: row wrap; /*Si no le ponemos esto las cajas se saldrían del contenedor principal. En cambio de esta manera se colocan en fila pero si no caben se ponen una debajo de la otra.*/
+    justify-content: space-between;
+    flex-basis: 80%;
+    
+
+}
+
+.project{/*A cada cajita le vamos a dar un estilo*/
+    flex-grow: 1;
+    flex-basis: 250px;
+    margin-bottom: 25px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+
+}
+
+.project img{
+    width: 100%;/*Para que ocupe el 100% de la cajita que lo contiene*/
+    
+}
+
+.project-info{
+    padding: 10px;
+
+}
+
+.project-info a{
+    font-size: 16px;
+    color: black;
+    transition: all 300ms;
+}
+
+.project-info p{
+    color: rgba(128, 128, 128, 0.651);
+}
+
+.project-info a:hover{
+    color: gainsboro;
+}
+
+#aside{
+    flex-basis: 15%;
+    margin-right: 30px;
+    padding: 15px;
+
+    display: flex;/*Para que las cajas que haya dentro de el puedan ser flexibles convertimos el aside en una caja contenedora flex. Y le decimos que las cajas que tiene dentro tienen que ponerse en dirección de columna.*/
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#aside h2{
+    display: block;
+    width: 100%; /*Que ocupe el 100% de la caja que lo contiene. En este caso el aside*/
+    font-size: 18px;
+    color: rgba(68, 68, 68, 0.767);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+#aside ul{
+    list-style: none;
+}
+
+#aside ul li{
+    padding-bottom: 20px;
+}
+
+#aside a{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    background-color: #eee;
+    color: #444;
+    transition: all 300ms;
+    text-transform: uppercase;
+
+
+}
+
+#aside a:hover{
+    background: #444;
+    color: white;
+}
+
+#footer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+
+    height: 120px;
+    align-items: center;
+    border-top: 1px solid #ccc;
+}
+
+#footer .logo{
+    flex-basis: auto;
+    flex-grow: 1;
+    order: 2; /*Estamos poniendo el logo al lado derecho y la info Cristy Miro al izquierdo. Es decir, lo hemos pasado en segunda posición y el nombre al primero. */
+    text-align: right;
+    margin-right: 20px;
+}
+
+#footer .info{
+    flex-grow: 1;
+    order: 1;
+    margin-left: 20px;
+    text-shadow: 5px 5px 5px #ccc;
+}
+
+/*Ahora vamos a captar puntos de corte con los mediaquery*/
+
+@media (max-width: 1334px){/*Del pixel 0 al 1334 va a tener los siguientes estilos*/
+    header{
+        text-align: center;
+    }
+    #menu > ul{
+        margin-top: 20px;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
+}
+
